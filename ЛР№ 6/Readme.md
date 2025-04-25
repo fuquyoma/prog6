@@ -9,7 +9,7 @@
 python setup.py build_ext --inplace
 ```
 ### Создаём файл для сравнения Python и Cython
-[Файл](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/FarmaXXX.py) сравнивает запускает timeit с аналогичными параметрами и сравнивает два варианта и строит графики
+[Файл](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/FarmaXXX.py) запускает timeit с аналогичными параметрами и сравнивает два варианта и строит графики
 ### Результаты сравнения Python и Cython
 ![image](https://github.com/user-attachments/assets/8937a691-9c93-4609-979d-287e4a0f62c3)
 ### Сравнение общего времени выполнения Python и Cython
