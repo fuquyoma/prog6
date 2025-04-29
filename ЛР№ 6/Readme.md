@@ -15,3 +15,4 @@ python setup.py build_ext --inplace
 ![image](https://github.com/user-attachments/assets/96db29f6-c7b6-4b45-aa1a-d2d24b2ca2bb)
 ### Сравнение времени выполнения для каждого числа
 ![image](https://github.com/user-attachments/assets/e3eb615d-8118-4ae6-ac5b-3bde15192329)
+![scale_1200](https://github.com/user-attachments/assets/8f89f437-9c1b-4ac8-b151-aa97733d6493)
