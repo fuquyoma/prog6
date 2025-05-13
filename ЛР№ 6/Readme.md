@@ -4,7 +4,7 @@
 ### Готовим файлы для компиляции Cython
 Переписанная функция на [Cython](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/ferma_fact.pyx) и [setup.py](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/setup.py)
 ### Компилируем Cython
-``` python
+```python
 python setup.py build_ext --inplace
 ```
 ### Создаём файл для сравнения Python и Cython
@@ -17,8 +17,9 @@ python setup.py build_ext --inplace
 ![image](https://github.com/user-attachments/assets/e3eb615d-8118-4ae6-ac5b-3bde15192329)
 ## Шаг 2: Написать код так, чтобы массив данных для вычисления распределялся на несколько "вычислителей"  
 ### Создаём и готовим файл для вычисления через потоки и процессы.
+[Файл](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/step2.py)
 Функция для вычисления через потоки
-``` python
+```python
 def run_in_threads(func, data):
     durations = []
     for _ in range(repeat_times):
@@ -31,7 +32,7 @@ def run_in_threads(func, data):
     return results, np.mean(durations)
 ```
 Функция для вычисления через процессы
-``` python
+```python
 def run_in_processes(func, data):
     durations = []
     for _ in range(repeat_times):
@@ -47,12 +48,27 @@ def run_in_processes(func, data):
 ### Сравнение времени выполнения потоков и процессов Python и Cython реализации
 ![image](https://github.com/user-attachments/assets/46577191-9ec8-45e5-bb7d-6ef2b8f57136)
 
-![compare_timing2](https://github.com/user-attachments/assets/9f053d04-e569-48c7-9db2-5fbcd541359e)
+![compare_timing2](https://github.com/user-attachments/assets/052dee6b-d122-464c-ba48-e5eac5ac02df)
 
 ## Шаг 3: Использование GIL
 ### Пишем новый файл Cython и редактируем setup.py
+[Новый Cython-файл GIL](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/ferma_factGIL.pyx)  
+[Отредактированный setup.py](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/setup.py)  
+Код обновлённого [setup.py](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/setup.py)  
+```python
+from setuptools import setup
+from Cython.Build import cythonize
 
+setup(
+    ext_modules=cythonize("ferma_fact.pyx", annotate=True, language_level=3),
+)
 
+setup(
+    ext_modules=cythonize("ferma_factGIL.pyx",annotate=True, language_level="3", language="c")
+) 
+```
+### Копипуем файл из второго шага, но подключаем модуль Cython с GIL
+Для удобства проверки файл был дублирован под названием [step3.py](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/step3.py)
 ### Результаты 
 ![image](https://github.com/user-attachments/assets/fe019e47-1c39-424d-b16b-70789e0f18fc)
 
