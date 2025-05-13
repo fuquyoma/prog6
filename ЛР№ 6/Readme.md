@@ -20,21 +20,34 @@ python setup.py build_ext --inplace
 Функция для вычисления через потоки
 ``` python
 def run_in_threads(func, data):
-    with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
-        start = time.perf_counter()
-        results = list(executor.map(func, data))
-        end = time.perf_counter()
-    return results, end - start
+    durations = []
+    for _ in range(repeat_times):
+        with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            start = time.perf_counter()
+            for _ in range(number_of_runs):
+                results = list(executor.map(func, data))
+            end = time.perf_counter()
+            durations.append(end - start)
+    return results, np.mean(durations)
 ```
 Функция для вычисления через процессы
 ``` python
 def run_in_processes(func, data):
-    with concurrent.futures.ProcessPoolExecutor(max_workers=NUM_WORKERS) as executor:
-        start = time.perf_counter()
-        results = list(executor.map(func, data))
-        end = time.perf_counter()
-    return results, end - start
+    durations = []
+    for _ in range(repeat_times):
+        with concurrent.futures.ProcessPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            start = time.perf_counter()
+            for _ in range(number_of_runs):
+                results = list(executor.map(func, data))
+            end = time.perf_counter()
+            durations.append(end - start)
+    return results, np.mean(durations)
 ```
 *Дальше код проводит вычисления сначала Python, потом Cython реализацию и строит график сравнения*
 ### Сравнение времени выполнения потоков и процессов Python и Cython реализации
-![compare_timing2](https://github.com/user-attachments/assets/0bf50476-29cf-4dbd-9a73-e425f779a137)
+![image](https://github.com/user-attachments/assets/46577191-9ec8-45e5-bb7d-6ef2b8f57136)
+
+![compare_timing2](https://github.com/user-attachments/assets/9f053d04-e569-48c7-9db2-5fbcd541359e)
+
+## Шаг 3: Использование GIL
+### Пишем новый файл Cython и редактируем setup.py
