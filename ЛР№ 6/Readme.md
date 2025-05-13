@@ -51,3 +51,9 @@ def run_in_processes(func, data):
 
 ## Шаг 3: Использование GIL
 ### Пишем новый файл Cython и редактируем setup.py
+
+
+### Результаты 
+![image](https://github.com/user-attachments/assets/fe019e47-1c39-424d-b16b-70789e0f18fc)
+
+![compare_timing3](https://github.com/user-attachments/assets/c490e7b8-8bab-4dcd-8784-6a0789dfc776)
