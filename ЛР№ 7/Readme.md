@@ -1,4 +1,4 @@
 # Лабораторная работа№ 7
 ## Выполнил: Гневнов А.Е., ИВТ 2.1
-### [Файл](https://github.com/fuquyoma/prog6/blob/main/ЛР№%205/DOLLARDOLLARDOLLARDIRTYPAPPER№5.ipynb) с выполненной работой
+### [Файл]([https://github.com/fuquyoma/prog6/blob/main/ЛР№%205/DOLLARDOLLARDOLLARDIRTYPAPPER№5.ipynb](https://github.com/fuquyoma/prog6/blob/main/ЛР№%207/LRus7.ipynb)) с выполненной работой
 
