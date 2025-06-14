@@ -50,7 +50,7 @@ def run_in_processes(func, data):
 
 ![compare_timing2](https://github.com/user-attachments/assets/052dee6b-d122-464c-ba48-e5eac5ac02df)
 
-## Шаг 3: Использование GIL
+## Шаг 3: GIL
 ### Пишем новый файл Cython и редактируем setup.py
 [Новый Cython-файл GIL](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/ferma_factGIL.pyx)  
 [Отредактированный setup.py](https://github.com/fuquyoma/prog6/blob/main/ЛР№%206/setup.py)  
